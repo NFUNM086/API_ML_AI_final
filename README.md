@@ -255,7 +255,7 @@ if response:
 - **HTTP 方法**：POST
 - **请求URL**：http://apis.juhe.cn/landmarkDetect/index
 - **调用价目表**
-![image.png](https://upload-images.jianshu.io/upload_images/9400767-ff2afa5739bc6492.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](https://upload-images.jianshu.io/upload_images/9400767-10028d72c361ec67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 **调用输入**
@@ -355,10 +355,13 @@ _ = plt.title(landmark_name, size="x-large", y=-0.1)
 使用后风险报告：在PRD文件中是否有说明且提供连结证据，所使用的API类别的现在及未来发展性，如API市场竞争程度丶输入输出限制丶定价丶及可替代的程序库（改用自己开发的代码及数据库而不用API）等等
 
 ##### API市场竞争程度
+
 **1. 地标识别**
 市场上主流公司（包括百度智能云、微软、聚合数据等）的图像识别api分类下都有地标识别。竞争较大，看哪家识别精确度高则哪家优胜。
+
 **2. 通用物体和场景识别**
 市场上主流公司（包括百度智能云、阿里等）都有场景识别的api。大同小异都是分类、打标签的功能。竞争较大，看哪家分类准确、标签元素多元则哪家优胜。
+
 **3. 图像搜索**
 图像搜索是个热门的api，主要是因为能够返回相似内容的图片，应用场景多元。
 
@@ -380,10 +383,6 @@ _ = plt.title(landmark_name, size="x-large", y=-0.1)
 **2. 通用物体和场景识别**
 **3. 图像搜索**
 
-##### 可替代的程序库
-**1. 地标识别**
-**2. 通用物体和场景识别**
-**3. 图像搜索**
 
 #### API4.加分项 3%
 3个人工智能API：地标识别api、通用物体和场景识别api、图像搜索api
