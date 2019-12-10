@@ -203,6 +203,39 @@ if response:
 {'has_more': True, 'log_id': 3435434730661354600, 'result_num': 3, 'result': [{'score': 0.57360649108887, 'brief': '巴厘岛金巴兰海滩', 'cont_sign': '3300373147,1829607933'}, {'score': 0.40868338942528, 'brief': '深圳杨梅坑', 'cont_sign': '1554820251,3584136211'}, {'score': 0.56604534387589, 'brief': '惠女湾', 'cont_sign': '2418627335,4044647917'}]}
 ```
 
+#### 核心功能API三：通用物体和场景识别（百度智能云）
+**调用输入**
+```
+# encoding:utf-8
+import requests 
+
+# client_id 为官网获取的AK， client_secret 为官网获取的SK
+host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=你的AK&client_secret=你的SK'
+response = requests.get(host)
+if response:
+    print(response.json())
+
+import requests
+import base64
+
+request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general"
+# 二进制方式打开图片文件
+f = open('图片路径', 'rb')
+img = base64.b64encode(f.read())
+
+params = {"image":img}
+access_token = '24.4df7beea4c26f69ff9f9211c3d26d907.2592000.1578584383.282335-17992992'
+request_url = request_url + "?access_token=" + access_token
+headers = {'content-type': 'application/x-www-form-urlencoded'}
+response = requests.post(request_url, data=params, headers=headers)
+if response:
+    print (response.json())
+```
+
+**输出**
+```
+{'log_id': 3705053088486162506, 'result_num': 5, 'result': [{'score': 0.910103, 'root': '', 'keyword': '玉屏峰'}, {'score': 0.71172, 'root': '自然风景-山峦', 'keyword': '山峦'}, {'score': 0.410596, 'root': '商品-工艺品', 'keyword': '工艺品'}, {'score': 0.226717, 'root': '植物-树', 'keyword': '树'}, {'score': 0.035858, 'root': '商品-家装建材', 'keyword': '石头'}]}
+```
 
 #### API2.使用比较分析 5%
 使用比较分析：在PRD文件中是否有说明且提供连结证据，所使用的API是查找过最适用的（主要竞争者无或比较次），如考量其成熟度丶性价比丶等等
@@ -223,7 +256,6 @@ if response:
 - **请求URL**：http://apis.juhe.cn/landmarkDetect/index
 - **调用价目表**
 ![image.png](https://upload-images.jianshu.io/upload_images/9400767-ff2afa5739bc6492.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 
 **调用输入**
 ```
