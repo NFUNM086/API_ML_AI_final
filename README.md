@@ -12,7 +12,7 @@
 
 ## 介绍
 
-这是一款为小型影视拍摄制作群体提供挑选拍摄场景帮助服务的app。
+这是一款为有拍摄摄像需求的群体提供挑选拍摄场景帮助服务的app。
 
 ## 目标用户
 
@@ -93,12 +93,7 @@
 ### API1.使用水平 5%
 使用水平：在PRD文件中是否有说明且展示，核心功能所应用的API之输入及输出
 
-#### 地标识别（百度智能云）
-- **接口描述**：该请求用于识别地标，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的地标识别结果。
-- **HTTP 方法**：POST
-- **请求URL**：https://aip.baidubce.com/rest/2.0/image-classify/v1/landmark
-- **调用价目表**
-图
+#### 核心功能API一：地标识别（百度智能云）
 
 
 **调用输入**
@@ -140,12 +135,95 @@ if response:
 }
 ```
 
+#### 核心功能API二：图像搜索（百度智能云）
+
+
+**调用输入**
+```
+# encoding:utf-8
+import requests 
+
+host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=你的AK&client_secret=你的SK'
+# client_id 为官网获取的AK， client_secret 为官网获取的SK
+response = requests.get(host)
+if response:
+    print(response.json())
+
+import requests
+import base64
+
+'''
+相似图检索—入库 （控制台的图库管理在线手动上传也可以）
+'''
+
+request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/similar/add"
+# 二进制方式打开图片文件
+f = open('图片路径', 'rb')
+img = base64.b64encode(f.read())
+
+params = {"brief":"{\"name\":\"小度\", \"id\":\"1\"}","image":img,"tags":"1,1"}  # "brief"的意思是“摘要”，输出{"name":"小度", "id":"1"}这个的摘要；"tags"的意思是“分类”， 有两个分类，输出两个1
+access_token = '你的token'
+request_url = request_url + "?access_token=" + access_token
+headers = {'content-type': 'application/x-www-form-urlencoded'}
+response = requests.post(request_url, data=params, headers=headers)
+if response:
+    print (response.json())
+```
+**输出**
+```
+'''
+相似图检索—入库 
+'''
+{'log_id': 2615798846622334216, 'cont_sign': '2277041864,3742307042'}
+```
+**调用输入**
+```
+'''
+相似图检索—检索
+'''
+
+request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/similar/search"
+# 二进制方式打开图片文件
+f = open('C:\\Users\\Lenovo\\Desktop\\abc\\999.jpg', 'rb')
+img = base64.b64encode(f.read())
+
+params = {"image":img,"pn":10,"rn":5}
+access_token = '24.7236947ac4e0a0f9b5de85a2b6a1fe18.2592000.1578387925.282335-17961157'
+request_url = request_url + "?access_token=" + access_token
+headers = {'content-type': 'application/x-www-form-urlencoded'}
+response = requests.post(request_url, data=params, headers=headers)
+if response:
+    print (response.json())
+```
+**输出**
+```
+'''
+相似图检索—检索 
+'''
+{'has_more': True, 'log_id': 3435434730661354600, 'result_num': 3, 'result': [{'score': 0.57360649108887, 'brief': '巴厘岛金巴兰海滩', 'cont_sign': '3300373147,1829607933'}, {'score': 0.40868338942528, 'brief': '深圳杨梅坑', 'cont_sign': '1554820251,3584136211'}, {'score': 0.56604534387589, 'brief': '惠女湾', 'cont_sign': '2418627335,4044647917'}]}
+```
+
+
+#### API2.使用比较分析 5%
+使用比较分析：在PRD文件中是否有说明且提供连结证据，所使用的API是查找过最适用的（主要竞争者无或比较次），如考量其成熟度丶性价比丶等等
+
+#### 地标识别（百度智能云）
+- **接口描述**：该请求用于识别地标，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的地标识别结果。
+- **HTTP 方法**：POST
+- **请求URL**：https://aip.baidubce.com/rest/2.0/image-classify/v1/landmark
+- **调用价目表**
+![image.png](https://upload-images.jianshu.io/upload_images/9400767-fe6e764956f64100.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+- **优势**
+![image.png](https://upload-images.jianshu.io/upload_images/9400767-e4fd3578051204f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+- **调用输入和输出在上述有提到，这里将不再列出**
+
 #### 地标识别（聚合数据）
 - **接口描述**：该请求用于识别地标，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的地标识别结果。
 - **HTTP 方法**：POST
 - **请求URL**：http://apis.juhe.cn/landmarkDetect/index
 - **调用价目表**
-图
+![image.png](https://upload-images.jianshu.io/upload_images/9400767-ff2afa5739bc6492.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 **调用输入**
 ```
@@ -176,7 +254,8 @@ if response:
 - **HTTP 方法**：POST
 - **请求URL**：
 - **调用价目表**
-图
+![image.png](https://upload-images.jianshu.io/upload_images/9400767-b8eb15a39f22aa87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 **调用输入**
@@ -233,11 +312,14 @@ _ = plt.title(landmark_name, size="x-large", y=-0.1)
 
 ```
 
-#### API2.使用比较分析 5%
-使用比较分析：在PRD文件中是否有说明且提供连结证据，所使用的API是查找过最适用的（主要竞争者无或比较次），如考量其成熟度丶性价比丶等等
+#### 评价：地标识别api
+**百度智能云** 免费调用3000次，300万次以内3元千次，超过300万次1.8元千次，性价比高。而且优势有可视化图库管理，可以支持上传、编辑等功能，提供服务保障
+**聚合数据** 一个账号免费次数只有10次，购买套餐选择不多，性价比不高，不太适合个人开发者
+**微软** 需要在环境变量配置key和endpoint，相对比上述两者麻烦一点，个人用户可以免费一万次调用，而付费不仅可以调用量无限制，还可以增加QPS（每秒可发送请求数）
+∴ 综上所述，选择**百度智能云**的地标识别api服务。
 
 #### API3.使用后风险报告 5%
 使用后风险报告：在PRD文件中是否有说明且提供连结证据，所使用的API类别的现在及未来发展性，如API市场竞争程度丶输入输出限制丶定价丶及可替代的程序库（改用自己开发的代码及数据库而不用API）等等
 
 #### API4.加分项 3%
-使用复杂度：用了2个以上机器学习与人工智能的API之输入及输出
+3个人工智能API：地标识别api、通用物体和场景识别api、图像搜索api
