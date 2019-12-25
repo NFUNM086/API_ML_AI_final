@@ -132,7 +132,7 @@
 
 
 
-##### [产品原型链接](http://nfunm086.gitee.io/api_prototype)
+##### [产品原型链接](https://nfunm086.github.io/API_Prototype/)
 
 
 ### API产品使用关键AI或机器学习之API的输出入展示 15%
