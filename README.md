@@ -145,8 +145,7 @@
 [具体流程拆分和api调用的结合可点击查看原型文档的【主要功能流程图】](https://nfunm086.github.io/API_Prototype/#g=1&p=%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE)
 
 #### 原型文档
-**[原型文档下载链接]([https://github.com/NFUNM086/API_Prototype](https://github.com/NFUNM086/API_Prototype)
-)**
+**[原型文档下载链接](https://github.com/NFUNM086/API_Prototype)**
 
 
 ### API产品使用关键AI或机器学习之API的输出入展示 15%
