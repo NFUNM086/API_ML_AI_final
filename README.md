@@ -125,13 +125,13 @@
 
 **核心交互页面：**
 
-![核心交互页面1.png](https://upload-images.jianshu.io/upload_images/9400767-a0b3cd5a9c2e39ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+核心交互页面1
 
 ① 此页面调用了**地标识别api**。用户上传图片，后台会把该图片与后台的图片库进行快速对比测试，最终返回“地点名称”的值，对应显示在原型中的“地点”的文本框内；
 此页面还调用了**通用物体和场景识别api**。用户上传图片，后台根据分析图片的数据点，输出图片中的多个“物体/场景名称”和“百科信息内容描述”，对应显示在原型中的“分类标签”“地标特色”“百科信息”的文本框内。
 [具体交互详情可点击查看原型文档的【1.首页-1.1识别地点-识别后信息】页面](https://nfunm086.github.io/API_Prototype/#g=1&p=%E8%AF%86%E5%88%AB%E5%90%8E%E4%BF%A1%E6%81%AF)
 
-![核心交互页面2.png](https://upload-images.jianshu.io/upload_images/9400767-4e6705e601755991.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+核心交互页面2
 
 ② ……
 [具体交互详情可点击查看原型文档的【1.首页-1.2找相似场景-场景推荐（滑动模式）】页面](https://nfunm086.github.io/API_Prototype/#g=1&p=%E5%9C%BA%E6%99%AF%E6%8E%A8%E8%8D%90%EF%BC%88%E6%BB%91%E5%8A%A8%E5%BD%A2%E5%BC%8F%EF%BC%89)
@@ -150,7 +150,7 @@
 口头操作说明：多少程度上在2-3分钟时间限制内，对听众留下了「的确这是个可行丶可用的人工智能加值产品」的印象
 
 ##### 产品架构图
-![Sceneing APP产品架构图.png](https://upload-images.jianshu.io/upload_images/9400767-1c8d168725a82701.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+产品架构图
 
 
 
