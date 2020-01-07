@@ -150,8 +150,7 @@
 口头操作说明：多少程度上在2-3分钟时间限制内，对听众留下了「的确这是个可行丶可用的人工智能加值产品」的印象
 
 ##### 产品架构图
-产品架构图
-
+![Sceneing APP.png](https://upload-images.jianshu.io/upload_images/9400767-8c95756277ff6361.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ##### [产品原型链接](https://nfunm086.github.io/API_Prototype/)
