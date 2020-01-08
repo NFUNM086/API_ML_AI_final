@@ -124,9 +124,8 @@
 ![Sceneing APP.png](https://upload-images.jianshu.io/upload_images/9400767-8c95756277ff6361.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 交互及界面设计
-交互及界面设计：在PRD文件中是否有说明且原型是否有做到：交互及界面设计的某个核心交互环节使用了人工智能的加值
 
-**核心交互页面：**
+**以下为核心交互页面：**
 
 ![核心交互页面1.png](https://upload-images.jianshu.io/upload_images/9400767-a0b3cd5a9c2e39ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -137,10 +136,9 @@
 ![核心交互页面2.png](https://upload-images.jianshu.io/upload_images/9400767-4e6705e601755991.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ② 此页面调用了**相似图像搜索api**。用户上传图片，后台会把该图片与后台的图片库进行快速对比测试，最终从相似度最高为序把返回的图片依次呈现在“滑动模式”的左、右两侧。
-[具体交互详情 可点击查看原型文档的【1.首页-1.2找相似场景-场景推荐（滑动模式）】页面](https://nfunm086.github.io/API_Prototype/#g=1&p=%E5%9C%BA%E6%99%AF%E6%8E%A8%E8%8D%90%EF%BC%88%E6%BB%91%E5%8A%A8%E5%BD%A2%E5%BC%8F%EF%BC%89)
+[具体交互详情可点击查看原型文档的【1.首页-1.2找相似场景-场景推荐（滑动模式）】页面](https://nfunm086.github.io/API_Prototype/#g=1&p=%E5%9C%BA%E6%99%AF%E6%8E%A8%E8%8D%90%EF%BC%88%E6%BB%91%E5%8A%A8%E5%BD%A2%E5%BC%8F%EF%BC%89)
 
 #### 信息设计
-信息设计：在PRD文件中是否有说明且原型是否有做到：信息设计的某个核心信息或设计使用了人工智能的加值
 
 [具体流程拆分和api调用的结合可点击查看原型文档的【主要功能流程图】](https://nfunm086.github.io/API_Prototype/#g=1&p=%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE)
 
@@ -298,7 +296,6 @@ if response:
 ```
 
 #### API2.使用比较分析 5%
-使用比较分析：在PRD文件中是否有说明且提供连结证据，所使用的API是查找过最适用的（主要竞争者无或比较次），如考量其成熟度丶性价比丶等等
 
 #### 地标识别（百度智能云）
 - **接口描述**：该请求用于识别地标，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的地标识别结果。
@@ -316,7 +313,6 @@ if response:
 - **请求URL**：http://apis.juhe.cn/landmarkDetect/index
 - **调用价目表**
 ![image.png](https://upload-images.jianshu.io/upload_images/9400767-10028d72c361ec67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 
 
 **调用输入**
@@ -349,7 +345,6 @@ if response:
 - **请求URL**：
 - **调用价目表**
 ![image.png](https://upload-images.jianshu.io/upload_images/9400767-b8eb15a39f22aa87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 
 
 **调用输入**
@@ -411,6 +406,34 @@ _ = plt.title(landmark_name, size="x-large", y=-0.1)
 **聚合数据** 一个账号免费次数只有10次，购买套餐选择不多，性价比不高，不太适合个人开发者
 **微软** 需要在环境变量配置key和endpoint，相对比上述两者麻烦一点，个人用户可以免费一万次调用，而付费不仅可以调用量无限制，还可以增加QPS（每秒可发送请求数）
 ∴ 综上所述，选择**百度智能云**的地标识别api服务。
+
+#### 物体和场景识别（Face++旷视）
+- **接口描述**：调用者提供图片文件或者图片URL，进行图片分析，识别图片场景和图片主体。
+- **HTTP 方法**：POST
+- **请求URL**：https://api-cn.faceplusplus.com/imagepp/beta/detectsceneandobject
+- **调用价目表**
+因为是beta版，所以目前为[免费](https://www.faceplusplus.com.cn/v2/pricing-details/#api_5)
+
+- **优势**
+
+![Face++物体和场景识别优势.png](https://upload-images.jianshu.io/upload_images/9400767-1af78b428199f64a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+- **调用**
+
+#### 图像标签（腾讯云）
+- **接口描述**：图像标签利用深度学习技术、海量训练数据，可以对图片进行智能分类、物体识别等。
+- **HTTP 方法**：POST
+- **请求URL**： tiia.tencentcloudapi.com
+- **调用价目表**
+因为是beta版，所以目前为[免费](https://www.faceplusplus.com.cn/v2/pricing-details/#api_5)
+
+- **优势**
+
+
+- **调用**
+
+
 
 #### API3.使用后风险报告 5%
 使用后风险报告：在PRD文件中是否有说明且提供连结证据，所使用的API类别的现在及未来发展性，如API市场竞争程度丶输入输出限制丶定价丶及可替代的程序库（改用自己开发的代码及数据库而不用API）等等
