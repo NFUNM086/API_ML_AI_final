@@ -145,7 +145,8 @@
 [具体流程拆分和api调用的结合可点击查看原型文档的【主要功能流程图】](https://nfunm086.github.io/API_Prototype/#g=1&p=%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE)
 
 #### 原型文档
-**[原型文档下载链接](https://github.com/NFUNM086/API_Prototype)**
+**[原型文档下载链接](https://github.com/NFUNM086/API_ML_AI_final/blob/master/Sceneing%E5%8E%9F%E5%9E%8B.rp
+)**
 
 
 ### API产品使用关键AI或机器学习之API的输出入展示 15%
@@ -156,7 +157,7 @@
 
 
 **调用输入**
-```
+```python
 # encoding:utf-8
 import requests
 import base64
@@ -180,12 +181,12 @@ if response:
     print (response.json())
 ```
 **输出示例一**
-```
+```python
 {'log_id': 4511370718357138505, 'result': {'landmark': '杨梅坑'}}
 # log_id为请求标识码，随机数，唯一，result为识别结果，landmark为地标名称，无法识别则返回空字符串
 ```
 **输出示例二**
-```
+```python
 {
 	'log_id': 6946576311633325961,
 	'result': {
@@ -198,7 +199,7 @@ if response:
 
 
 **调用输入**
-```
+```python
 # encoding:utf-8
 import requests 
 
@@ -229,14 +230,14 @@ if response:
     print (response.json())
 ```
 **输出**
-```
+```python
 '''
 相似图检索—入库 
 '''
 {'log_id': 2615798846622334216, 'cont_sign': '2277041864,3742307042'}
 ```
 **调用输入**
-```
+```python
 '''
 相似图检索—检索
 '''
@@ -255,7 +256,7 @@ if response:
     print (response.json())
 ```
 **输出**
-```
+```python
 '''
 相似图检索—检索 
 '''
@@ -264,7 +265,7 @@ if response:
 
 #### 核心功能API三：通用物体和场景识别（百度智能云）
 **调用输入**
-```
+```python
 # encoding:utf-8
 import requests 
 
@@ -292,7 +293,7 @@ if response:
 ```
 
 **输出**
-```
+```python
 {'log_id': 3705053088486162506, 'result_num': 5, 'result': [{'score': 0.910103, 'root': '', 'keyword': '玉屏峰'}, {'score': 0.71172, 'root': '自然风景-山峦', 'keyword': '山峦'}, {'score': 0.410596, 'root': '商品-工艺品', 'keyword': '工艺品'}, {'score': 0.226717, 'root': '植物-树', 'keyword': '树'}, {'score': 0.035858, 'root': '商品-家装建材', 'keyword': '石头'}]}
 ```
 
@@ -319,7 +320,7 @@ if response:
 
 
 **调用输入**
-```
+```python
 import requests,json
 import base64
 
@@ -338,7 +339,7 @@ if response:
 ```
 
 **输出示例**
-```
+```python
 {'reason': 'success', 'result': '巴黎圣母院', 'error_code': 0}
 ```
 
@@ -352,7 +353,7 @@ if response:
 
 
 **调用输入**
-```
+```python
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline
@@ -397,7 +398,7 @@ plt.axis("off")
 _ = plt.title(landmark_name, size="x-large", y=-0.1)
 ```
 **输出示例一**
-```
+```python
 <pre style="box-sizing: border-box; overflow: auto; font-family: monospace; font-size: inherit; display: block; padding: 1px 0px; margin: 0px; line-height: inherit; word-break: break-all; overflow-wrap: break-word; color: black; background-color: transparent; border: 0px; border-radius: 0px; white-space: pre-wrap; vertical-align: baseline;">{'result': {'landmarks': [{'name': 'Forbidden City', 'confidence': 0.9967284202575684}]}, 'requestId': 'ee466183-21b6-44b0-85da-46b108767670', 'metadata': {'width': 1080, 'height': 732, 'format': 'Jpeg'}}
 </pre>
 
