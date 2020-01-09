@@ -303,6 +303,7 @@ if response:
 - **HTTP 方法**：POST
 - **请求URL**：https://aip.baidubce.com/rest/2.0/image-classify/v1/landmark
 - **调用价目表**
+
 ![image.png](https://upload-images.jianshu.io/upload_images/9400767-fe6e764956f64100.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - **优势**
 ![image.png](https://upload-images.jianshu.io/upload_images/9400767-e4fd3578051204f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -343,8 +344,8 @@ if response:
 #### 地标识别（微软-使用域模型）
 - **接口描述**：支持特定于域的进一步分析。有两种使用领域特定模型的方法：单独使用（范围分析）或作为分类功能的增强。其中增强的分类分析支持特定于域的模型，包括地名流和**地标**。
 - **HTTP 方法**：POST
-- **请求URL**：
 - **调用价目表**
+
 ![image.png](https://upload-images.jianshu.io/upload_images/9400767-b8eb15a39f22aa87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
@@ -537,9 +538,81 @@ print(response.text)
 
 #### ∴ 综上所述，选择**百度智能云**的相似图像搜索api服务。
 
-
-
 #### 通用物体和场景识别（百度智能云）
+- **接口描述**：该请求用于通用物体及场景识别，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的多个物体及场景标签。
+- **HTTP方法**：POST
+- **请求URL**：https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general
+- **调用价目表**
+
+![通用物体和场景识别（百度智能云）价目表.png](https://upload-images.jianshu.io/upload_images/9400767-718811ec65936bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- **优势**
+
+![通用物体和场景识别（百度智能云）产品优势.png](https://upload-images.jianshu.io/upload_images/9400767-4ed2a5346c415f8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- **调用输入和输出在上述有提到，这里将不再列出**
+
+#### 图像标签（阿里云）
+- **接口描述**：该请求用于通用物体及场景识别，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的多个物体及场景标签。
+- **HTTP方法**：POST
+- **请求URL**：https://dtplus-cn-shanghai.data.aliyuncs.com/image/tag
+- **调用价目表**
+
+![图像打标（阿里云）价目表.png](https://upload-images.jianshu.io/upload_images/9400767-174945e3671c4a78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- **调用输入**
+```python
+import requests
+import base64
+import json
+
+'''
+通用物体和场景识别
+'''
+
+request_url = "https://dtplus-cn-shanghai.data.aliyuncs.com/image/tag"
+
+param = {"type":0,
+          "image_url":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1578585230135&di=dbd34e43564b1d13992ff9729fa4cc85&imgtype=0&src=http%3A%2F%2Fres.co188.com%2Fdata%2Fdrawing%2Fimg640%2F5954315204080.jpg",
+          "Access Key ID":'LTAI4FxfuauvvhYJYxt75i4F',
+          "Access Key Secret":'l6iZ04BkjE0H2h8KeMTm7zGkzoRLcD'
+         }
+
+request_url = request_url
+
+response = requests.post(request_url, params=param)
+# if response:
+    # print (response.json())
+print(response.text)
+```
+
+- **输出示例**
+```python
+Body：{
+  "tags": [
+    {
+      "value": "教堂",
+      "confidence": 66
+    },
+    {
+      "value": "钟楼",
+      "confidence": 64
+    },
+    {
+      "value": "建筑",
+      "confidence": 12
+    },
+    {
+      "value": "城堡",
+      "confidence": 11
+    }
+  ],
+  "errno": 0,
+  "request_id": "637be35f-7bc6-4e8a-9175-a4756c7b9b0a"
+}
+```
+
+
 
 #### 物体和场景识别（Face++旷视）
 - **接口描述**：调用者提供图片文件或者图片URL，进行图片分析，识别图片场景和图片主体。
@@ -553,60 +626,68 @@ print(response.text)
 ![Face++物体和场景识别优势.png](https://upload-images.jianshu.io/upload_images/9400767-1af78b428199f64a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-- **调用**
+- **调用输入**
+```python
 
-#### 图像标签（腾讯云）
-- **接口描述**：图像标签利用深度学习技术、海量训练数据，可以对图片进行智能分类、物体识别等。
-- **HTTP 方法**：POST
-- **请求URL**： tiia.tencentcloudapi.com
-- **调用价目表**
-因为是beta版，所以目前为[免费](https://www.faceplusplus.com.cn/v2/pricing-details/#api_5)
+import requests
+import base64
+import urllib.request
+import urllib.error
+import time
 
-- **优势**
+request_url = "https://api-cn.faceplusplus.com/imagepp/beta/detectsceneandobject"
 
+image_url = r"C:\\Users\\Administrator\\Desktop\\abc\\087.jpg"
 
-- **调用**
+# 二进制方式打开图片文件
+f = open('C:\\Users\\Administrator\\Desktop\\abc\\087.jpg', 'rb')
+img = base64.b64encode(f.read())
 
+params = {"image_url":image_url,"api_key":'dJCR5LPiPEYsUdQUq32U6hfO-Mmlr8b3',"api_secret":'Xn9vQdeWPrE-G4XFQN2HhQRuLPqYNCsS'}
+access_token = '24.3bbc6665f4ee35c824e14f6cc32f7997.2592000.1578300330.282335-17961157'
+request_url = request_url + "?access_token=" + access_token
+headers = {'Content-Type': 'application / x-www-form-urlencoded'}
+response = requests.post(request_url, data=params, headers=headers)
+# if response:
+    # print (response.json())
+print(response.text)
 
+```
 
-#### API3.使用后风险报告 5%
-##### 一、API市场竞争程度
+- **输出失败报错**
+```python
+{"time_used": 1, "error_message": "MISSING_ARGUMENTS: api_key", "request_id": "1578580521,7ce6d568-1234-4a61-a577-57ce5e50fc85"}
+```
+寻求[网上解答](https://stackoverflow.com/questions/48652293/faceplusplus-error-message-missing-arguments-api-key-with-react-native-f)，尝试后无果。
+
+### 评价：相似图像搜索api
+| 不同家的地标识别api服务 | 个人评价 |
+| --- | --- |
+| 百度智能云 | 准确性较高，有每日免费调用500次数 |
+| 阿里云 | 没有免费调用次数 |
+| Face++ | 调用失败，尚未找到解决办法，排除 |
+
+#### ∴ 综上所述，选择**百度智能云**的相似图像搜索api服务。
+
+### API3.使用后风险报告 5%
+#### ① API市场竞争程度
 | API名称 | API市场竞争程度 |
 | --- | --- |
 | 地标识别 | 市场上主流公司（包括百度智能云、微软、聚合数据等）的图像识别api分类下都有地标识别。竞争较大，看哪家识别精确度高则哪家优胜。 | 
 | 通用物体和场景识别/图像标签 | 市场上主流公司（包括百度智能云、阿里、Face++等）都有场景识别的api。大同小异都是分类、打标签的功能。竞争较大，看哪家分类准确、标签元素多元则哪家优胜。 |
-| 图像搜索 | 图像搜索是个热门的api，主要是因为能够返回相似内容的图片，应用场景多元。 |
+| 图像搜索 | 图像搜索是个热门的api，主要是因为能够返回相似内容的图片，应用场景多元。目前为止比较热门的是百度智能云家的。 |
 
-##### 二、输入输出限制
+#### ②输入输出限制
 | API名称 | 输入输出限制 |
 | --- | --- |
 | 地标识别 | **输入限制** 图片可正常解码，且长宽比适宜，大小不超过4M。最短边至少15px，最长边最大4096px； **输出限制** 若地标无法识别则返回空字符串。 |
 | 通用物体和场景识别/图像标签 | **输入限制** 图片可正常解码，且长宽比适宜，图片大小不超过4M。最短边至少15px，最长边最大4096px； **输出限制** 只能返回摘要信息，无法返回图片。 |
 | 图像搜索 | **输入限制** 检索图和入库的原图要尽量保持场景一致性； **输出限制** fff |
 
-##### 三、定价
-**1. 地标识别**
-
-| 地标识别api类型 | 价格 |
-| --- | --- |
-| 百度智能云 | fff |
-| 聚合数据 | fff |
-| 微软？ | fff |
-
-**2.  通用物体和场景识别**
-fff
-
-**3. 相似图像搜索**
-
-| 相似图像搜索api类型 | 价格 |
-| --- | --- |
-| [百度智能云](https://ai.baidu.com/docs#/IMAGESEARCH-Pricing/38735f43) | 关于**图像入库**，每日10000次免费调用额度，免费额度用尽后按照如下价格进行计费。如需付费使用，可购买次数包或开通按调用量后付费。关于**图像检索**，每日500次免费调用额度，免费额度用尽后按照如下价格进行计费。如需付费使用，可购买次数包或开通按调用量后付费。 |
-| [腾讯云](https://market.cloud.tencent.com/products/9906) | ¥1.00/100次/一年 |
-
-##### 四、可替代的程序库
+#### ③可替代的程序库
 **1. 地标识别**
 **2. 通用物体和场景识别**
 **3. 图像搜索**
 
-#### API4.加分项 3%
+### API4.加分项 3%
 3个人工智能API：地标识别api、通用物体和场景识别/图像标签api、图像搜索api
