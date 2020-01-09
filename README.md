@@ -488,7 +488,7 @@ print(response.text)
 import requests
 
 data = {
-		'apikey': 'CHUIGAWEI-10037-2020.01.09.17.51.30-15cd322ab1f0a1720f70b1f2d6c58875',
+		'apikey': '【输入你的apikey~我花钱买的~】',
         'imgname':'church1.jpg'
        }
 response = requests.post('http://apisim20.wozhitu.com:8084/vsearchtech/api/v1.0/apisim_detail',data=data)
@@ -510,7 +510,7 @@ print(response.text)
 import requests
 
 data = {
-		'apikey': 'CHUIGAWEI-10037-2020.01.09.17.51.30-15cd322ab1f0a1720f70b1f2d6c58875',
+		'apikey': '【输入你的apikey~我花钱买的~】',
         'catid':'0',
         'subject':'',
         'labeland':'',
@@ -575,8 +575,8 @@ request_url = "https://dtplus-cn-shanghai.data.aliyuncs.com/image/tag"
 
 param = {"type":0,
           "image_url":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1578585230135&di=dbd34e43564b1d13992ff9729fa4cc85&imgtype=0&src=http%3A%2F%2Fres.co188.com%2Fdata%2Fdrawing%2Fimg640%2F5954315204080.jpg",
-          "Access Key ID":'LTAI4FxfuauvvhYJYxt75i4F',
-          "Access Key Secret":'l6iZ04BkjE0H2h8KeMTm7zGkzoRLcD'
+          "Access Key ID":'输入你的Access ID Key',
+          "Access Key Secret":'输入你的Access Secret Key'
          }
 
 request_url = request_url
@@ -613,8 +613,6 @@ Body：{
 }
 ```
 
-
-
 #### 物体和场景识别（Face++旷视）
 - **接口描述**：调用者提供图片文件或者图片URL，进行图片分析，识别图片场景和图片主体。
 - **HTTP 方法**：POST
@@ -644,8 +642,8 @@ image_url = r"C:\\Users\\Administrator\\Desktop\\abc\\087.jpg"
 f = open('C:\\Users\\Administrator\\Desktop\\abc\\087.jpg', 'rb')
 img = base64.b64encode(f.read())
 
-params = {"image_url":image_url,"api_key":'dJCR5LPiPEYsUdQUq32U6hfO-Mmlr8b3',"api_secret":'Xn9vQdeWPrE-G4XFQN2HhQRuLPqYNCsS'}
-access_token = '24.3bbc6665f4ee35c824e14f6cc32f7997.2592000.1578300330.282335-17961157'
+params = {"image_url":image_url,"api_key":'输入你的api_key',"api_secret":'输入你的api_secret'}
+access_token = '输入你的access_token'
 request_url = request_url + "?access_token=" + access_token
 headers = {'Content-Type': 'application / x-www-form-urlencoded'}
 response = requests.post(request_url, data=params, headers=headers)
@@ -684,11 +682,6 @@ print(response.text)
 | 地标识别 | **输入限制** 图片可正常解码，且长宽比适宜，大小不超过4M。最短边至少15px，最长边最大4096px； **输出限制** 若地标无法识别则返回空字符串。 |
 | 图像搜索 | **输入限制** 检索图和入库的原图要尽量保持场景一致性； **输出限制** 只能返回图片及其摘要信息 |
 | 通用物体和场景识别/图像标签 | **输入限制** 图片可正常解码，且长宽比适宜，图片大小不超过4M。最短边至少15px，最长边最大4096px； **输出限制** 只能返回摘要信息，无法返回图片。 |
-
-#### ③可替代的程序库
-**1. 地标识别**
-**2. 图像搜索**
-**3. 通用物体和场景识别/图像标签**
 
 ### API4.加分项 3%
 3个人工智能API：地标识别api、通用物体和场景识别/图像标签api、图像搜索api
