@@ -194,10 +194,10 @@ if response:
 }
 ```
 
-#### 核心功能API二：图像搜索（百度智能云）
+#### 核心功能API二：相似图像搜索（百度智能云）
+主要分为**图像入库**和**相似图像检索**两个步骤：
 
-
-**调用输入**
+**调用输入（图像入库）**
 ```python
 # encoding:utf-8
 import requests 
@@ -228,14 +228,14 @@ response = requests.post(request_url, data=params, headers=headers)
 if response:
     print (response.json())
 ```
-**输出**
+**输出（图像入库）**
 ```python
 '''
 相似图检索—入库 
 '''
 {'log_id': 2615798846622334216, 'cont_sign': '2277041864,3742307042'}
 ```
-**调用输入**
+**调用输入（相似图像检索）**
 ```python
 '''
 相似图检索—检索
@@ -254,7 +254,7 @@ response = requests.post(request_url, data=params, headers=headers)
 if response:
     print (response.json())
 ```
-**输出**
+**输出（相似图像检索）**
 ```python
 '''
 相似图检索—检索 
@@ -296,7 +296,7 @@ if response:
 {'log_id': 3705053088486162506, 'result_num': 5, 'result': [{'score': 0.910103, 'root': '', 'keyword': '玉屏峰'}, {'score': 0.71172, 'root': '自然风景-山峦', 'keyword': '山峦'}, {'score': 0.410596, 'root': '商品-工艺品', 'keyword': '工艺品'}, {'score': 0.226717, 'root': '植物-树', 'keyword': '树'}, {'score': 0.035858, 'root': '商品-家装建材', 'keyword': '石头'}]}
 ```
 
-#### API2.使用比较分析 5%
+### API2.使用比较分析 5%
 
 #### 地标识别（百度智能云）
 - **接口描述**：该请求用于识别地标，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的地标识别结果。
@@ -402,11 +402,144 @@ _ = plt.title(landmark_name, size="x-large", y=-0.1)
 
 ```
 
-#### 评价：地标识别api
-**百度智能云** 免费调用3000次，300万次以内3元千次，超过300万次1.8元千次，性价比高。而且优势有可视化图库管理，可以支持上传、编辑等功能，提供服务保障
-**聚合数据** 一个账号免费次数只有10次，购买套餐选择不多，性价比不高，不太适合个人开发者
-**微软** 需要在环境变量配置key和endpoint，相对比上述两者麻烦一点，个人用户可以免费一万次调用，而付费不仅可以调用量无限制，还可以增加QPS（每秒可发送请求数）
-∴ 综上所述，选择**百度智能云**的地标识别api服务。
+### 评价：地标识别api
+| 不同家的地标识别api服务 | 个人评价 |
+| --- | --- |
+| 百度智能云 | 免费调用3000次，300万次以内3元千次，超过300万次1.8元千次，性价比高。而且优势有可视化图库管理，可以支持上传、编辑等功能，提供服务保障 |
+| 聚合数据 | 一个账号免费次数只有10次，购买套餐选择不多，性价比不高，不太适合个人开发者 |
+| 微软 | 需要在环境变量配置key和endpoint，相对比上述两者麻烦一点，个人用户可以免费一万次调用，而付费不仅可以调用量无限制，还可以增加QPS（每秒可发送请求数）|
+
+#### ∴ 综上所述，选择**百度智能云**的地标识别api服务。
+
+#### 相似图像搜索（百度智能云）
+（分为图像入库和图像检索两个步骤）
+- **接口描述**：在自建图库中找到与检索图片语义相似的图片集，并给出相似度打分（综合图片类型、颜色、内容、布局等特征）。
+- **HTTP 方法**：POST
+- **请求URL**：https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/similar/add（图像入库）
+https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/similar/search（图像检索）
+- **调用价目表**
+![相似图像搜索（百度智能云）价目表.png](https://upload-images.jianshu.io/upload_images/9400767-cf21438c799ff606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+[价格详情请点击此处](https://ai.baidu.com/ai-doc/IMAGESEARCH/Zk3bczq54)
+- **优势**
+![相似图像搜索（百度智能云）产品优势.png](https://upload-images.jianshu.io/upload_images/9400767-6b35959b6de298b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+- **调用输入和输出在上述有提到，这里将不再列出**
+
+#### 相似图像搜索（阿里云）
+（分为创建图库、添加样本图片和图像检索三个步骤）
+- **接口描述**：检测指定图片和相似图库中的样本图片的相似度。
+- **HTTP 方法**：POST
+- **请求URL**：/green/similarity/library/add（创建图库）
+/green/similarity/image/add（添加样本图片）
+/green/image/scan（图像检索）
+- **调用价目表**
+![相似图搜索（阿里云）价目表.png](https://upload-images.jianshu.io/upload_images/9400767-7442140ea42fc659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+[价格详情请点击此处](https://www.aliyun.com/price/product/?spm=a2c4g.11186623.2.13.416f6961v2LznE#/lvwang/detail)
+- **优势**
+fff
+
+#### 相似图像搜索（我知图）
+（分为图片添加、图片搜索两个步骤，其中这两个步骤分别有本地上传和url上传两种方法）
+- **接口描述**：本服务提供基于图像内容的相似图像搜索. 即用输入图片本身的颜色分布, 几何形状, 纹理来搜索相似图片, 并将结果按与输入图片的相似度打分排序。
+- **HTTP方法**：POST
+- **请求URL**：http://apisim20.wozhitu.com:8084/vsearchtech/api/v1.0/apisim_additem（图片添加）
+http://apisim20.wozhitu.com:8084/vsearchtech/api/v1.0/apisim_search（图片搜索）
+- **调用价目表**
+![相似图像搜索（我知图）价目表.png](https://upload-images.jianshu.io/upload_images/9400767-b18861d645dc24e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- **优势**
+![相似图像搜索（我知图）优势.png](https://upload-images.jianshu.io/upload_images/9400767-7f7e5f7b7620dc1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- **调用输入（上传图片）**
+```python
+'''
+上传图片
+'''
+import requests
+
+data = {
+		'apikey': '【输入你的apikey~我花钱买的~】',
+        'imgname':'church.jpg',
+        'catid':'21',
+        'kwds':'',
+        'labels':'',
+        'title':'石室大教堂',
+        'info':''
+       }
+files = [
+        ('photo', ('dog1.jpg', open('C:\\Users\\Administrator\\Desktop\\abc\\004.jpg', 'rb'), 'image/jpg'))
+       
+]       
+response = requests.post('http://apisim20.wozhitu.com:8084/vsearchtech/api/v1.0/apisim_additem',data=data, files=files)
+print(response.text)
+```
+- **输出（上传图片）**
+```python
+{"class":"vs.vscommon.AnyData","data":"OK","v":0}
+```
+
+如果不确定自己上传图片成功没有，可以进行“查询图片”，以下为调用示例
+- **调用输入（查询图片）**
+```python
+# 查询图片
+import requests
+
+data = {
+		'apikey': 'CHUIGAWEI-10037-2020.01.09.17.51.30-15cd322ab1f0a1720f70b1f2d6c58875',
+        'imgname':'church1.jpg'
+       }
+response = requests.post('http://apisim20.wozhitu.com:8084/vsearchtech/api/v1.0/apisim_detail',data=data)
+print(response.text)
+```
+
+- **输出正确示例（查询图片）**
+```python
+{"class":"vs.vscommon.ImageSearchResultEntry","imgName":"church1.jpg","imgRelativePath":"0_All/10037_dynamicuidmapping.10037/0_All_Categories/20_20/church1.jpg","imgUrl":null,"info":"蓝天下的石室大教堂","keyword":"教堂","productPageUrl":null,"score":0.0,"tagsList":"30","title":"石室大教堂"}
+```
+- **输出错误示例（查询图片）**
+```python
+{"class":"vs.vscommon.ImageSearchResultEntry","imgName":null,"imgRelativePath":null,"imgUrl":null,"info":null,"keyword":null,"productPageUrl":null,"score":0.0,"tagsList":null,"title":null}
+```
+
+- **调用输入（图像搜索）**
+```python
+# 上传图片搜索
+import requests
+
+data = {
+		'apikey': 'CHUIGAWEI-10037-2020.01.09.17.51.30-15cd322ab1f0a1720f70b1f2d6c58875',
+        'catid':'0',
+        'subject':'',
+        'labeland':'',
+        'labelor':'',
+        'labelnot':''
+       }
+files = [
+        ('photo', ('008.jpg', open('C:\\Users\\Administrator\\Desktop\\abc\\008.jpg', 'rb'), 'image/jpg'))
+       
+]       
+response = requests.post('http://apisim20.wozhitu.com:8084/vsearchtech/api/v1.0/apisim_search', data=data, files=files)
+print(response.text)
+```
+
+- **输出示例（图像搜索）**
+```python
+{"class":"vs.vscommon.ImageSearchResultSet","header":{"class":"vs.vscommon.ImageSearchResultHeader","itemsFound":3,"requestParams":"[catid:0, apikey:CHUIGAWEI-10037-2020.01.09.17.51.30-15cd322ab1f0a1720f70b1f2d6c58875, subject:, labelnot:, labeland:, labelor:, photo:org.springframework.web.multipart.commons.CommonsMultipartFile@21b6b78f, controller:imgSimRest, action:[GET:getxxx, POST:apisim_search, DELETE:deletexxx]]","searchTimeMillSec":76},"itemGroupStatsTreeSet":[],"resultList":[{"class":"vs.vscommon.ImageSearchResultEntry","imgName":"church1.jpg","imgRelativePath":"0_All/10037_dynamicuidmapping.10037/0_All_Categories/20_20/church1.jpg","imgUrl":null,"info":"蓝天下的石室大教堂","keyword":"教堂","productPageUrl":null,"score":0.65605617,"tagsList":"30","title":"石室大教堂"},{"class":"vs.vscommon.ImageSearchResultEntry","imgName":"church3.jpg","imgRelativePath":"0_All/10037_dynamicuidmapping.10037/0_All_Categories/23_23/church3.jpg","imgUrl":null,"info":"仰视石室大教堂","keyword":"教堂","productPageUrl":null,"score":0.615116,"tagsList":"30","title":"石室大教堂"},{"class":"vs.vscommon.ImageSearchResultEntry","imgName":"church.jpg","imgRelativePath":"0_All/10037_dynamicuidmapping.10037/0_All_Categories/21_21/church.jpg","imgUrl":null,"info":null,"keyword":null,"productPageUrl":null,"score":0.60945016,"tagsList":null,"title":"石室大教堂"}]}
+```
+
+### 评价：相似图像搜索api
+| 不同家的地标识别api服务 | 个人评价 |
+| --- | --- |
+| 百度智能云 | api文档很详细具体，也有示例代码可供参考、优点在于除了用代码调用外，还提供控制台的图库管理，可实现在线一次上传最后10张图片和在线搜索图片的测试功能，缺点是接口调用无法批量上传图片 |
+| 阿里云 | 分为三个步骤，过于麻烦，且无示例代码提供 |
+| 我知图 | 不提供免费服务，生成key必须缴费，最低版20元/月，api文档逻辑不够规范和详细，调用api返回的json值不够直观清晰，且图片上传只能为JPG格式、300 – 800像素，总体体验一般 |
+
+#### ∴ 综上所述，选择**百度智能云**的相似图像搜索api服务。
+
+
+
+#### 通用物体和场景识别（百度智能云）
 
 #### 物体和场景识别（Face++旷视）
 - **接口描述**：调用者提供图片文件或者图片URL，进行图片分析，识别图片场景和图片主体。
