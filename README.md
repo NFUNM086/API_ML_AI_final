@@ -1,5 +1,8 @@
 # API_ML_AI期末项目——Sceneing APP
 
+#### “20x20”ppt 如果无法下载，可以点击以下链接保存至百度云盘进行查看，谢谢！
+#### 链接：https://pan.baidu.com/s/1nOsbf9NnCODhXM3waLeQLw 密码：sr1w
+
 ## 产品概况
 | 发布日期 | 12/10/2019 |
 | --------   | -----  |
